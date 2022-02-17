@@ -1,0 +1,8 @@
+{
+  "domain": "dev-aam3gkbf.us.auth0.com",
+  "clientId": "kup0idWFmiwEAFeNbUtReI7kblEVLjzs",
+  "audience": "https://dev-aam3gkbf.us.auth0.com/api/v2/",
+  "apiUri": "http://localhost:3001",
+  "appUri": "http://localhost:4200",
+  "errorPath": "/error"
+}
