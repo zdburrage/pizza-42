@@ -2,11 +2,11 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const { join } = require('path');
-const authConfig = require('./auth_config.json');
+const authConfig = require('./auth_config_prod.json');
 
 const app = express();
 
-const port = process.env.SERVER_PORT || 4200;
+const port = process.env.SERVER_PORT || 8080;
 
 app.use(morgan('dev'));
 
@@ -29,6 +29,21 @@ app.use(
   })
 );
 
-app.use(express.static(join(__dirname, 'dist')));
+function requireHTTPS(req, res, next) {
+  // The 'x-forwarded-proto' check is for Heroku
+  if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
+      return res.redirect('https://' + req.get('host') + req.url);
+  }
+  next();
+}
+
+
+//app.use(requireHTTPS);
+app.use(express.static('./dist/pizza-42-spa'));
+
+app.get('/*', function(req, res) {
+  res.sendFile('index.html', {root: 'dist/pizza-42-spa/'}
+);
+});
 
 app.listen(port, () => console.log(`App server listening on port ${port}`));
