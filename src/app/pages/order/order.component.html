@@ -2,13 +2,53 @@
   <div
     class="row align-items-center profile-header mb-5 text-center text-md-left"
   >
-    <div *ngIf="pizzas" class="col-md">
-      <h2>Pizzas</h2>
-      <select multiple>
-        <option *ngFor="let z of pizzas">{{ z?.type }} - {{z?.price | currency}}</option>
-      </select>
+  <div class="col-md">
+  <h2>Order Pizza</h2>
+  <div *ngIf="pizzas" class="">
+    <select name="selectedPizzas" [(ngModel)]="selectedPizzas" multiple>
+      <option [ngValue]="z" *ngFor="let z of pizzas">{{ z?.type }} - {{z?.price | currency}}</option>
+    </select>
+  </div>
+
+        <p
+        *ngIf="!user?.email_verified"
+      >
+        You have not verified your email address yet. Please verify your email to place an order.
+      </p>
+      <button (click)="verifyEmail()" class="btn-primary"
+      *ngIf="!user?.email_verified"
+    >
+      Verify Email/Resend Verification Email
+    </button>
+      <button (click)="orderPizza(user.sub)" class="btn-primary"
+        *ngIf="user?.email_verified"
+      >
+        Order Pizza!
+      </button>
     </div>
+
+
 
  
   </div>
+  <div
+  class="row align-items-center profile-header mb-5 text-center text-md-left"
+>
+  <div class="col-md">
+    <h2>Order History</h2>
+    <div *ngFor="let x of orders">
+      <p>
+        Date - {{x?.date | date}}
+      </p>
+      <p>
+        Pizzas - {{x?.pizzas}}
+      </p>
+      <p>
+        Price - {{x?.price | currency}}
+      </p>
+      -------------------------------------
+    </div>
+  </div>
+  </div>
+
 </div>

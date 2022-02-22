@@ -1,8 +1,8 @@
 {
   "domain": "dev-aam3gkbf.us.auth0.com",
   "clientId": "kup0idWFmiwEAFeNbUtReI7kblEVLjzs",
-  "audience": "https://dev-aam3gkbf.us.auth0.com/api/v2/",
+  "audience": "https://pizza42.com",
   "apiUri": "http://localhost:3001",
-  "appUri": "https://localhost:8080",
+  "appUri": "http://localhost:8080",
   "errorPath": "/error"
 }

@@ -15,6 +15,16 @@ export class ApiService {
   }
 
   getPizzas(): Observable<any> {
-    return this.http.get(`${config.environment.apiUri}/pizza`);
+    return this.http.get(`${config.environment.apiUri}/api/pizza`);
+  }
+
+  orderPizza(userId: string, userOrders: any[]): Observable<any> {
+    return this.http.post(`${config.environment.apiUri}/api/order`, {user_id: userId, orders: userOrders});
+  }
+  verifyEmail(userId: string) {
+    const body = {
+      user_id: userId
+    };
+    return this.http.post(`${config.environment.apiUri}/api/verification-email`, body);
   }
 }

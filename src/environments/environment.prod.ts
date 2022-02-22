@@ -2,15 +2,48 @@
 
 export let environment = {
   production: true,
-  apiUri: 'http://localhost:4201',
+  apiUri: 'https://pizza-42-auth0.herokuapp.com',
   auth: {
     domain: 'dev-aam3gkbf.us.auth0.com',
     clientId: 'kup0idWFmiwEAFeNbUtReI7kblEVLjzs',
-    audience: 'https://dev-aam3gkbf.us.auth0.com/api/v2/',
+    audience: 'https://pizza42.com',
+    scope: 'write:orders',
     redirectUri: window.location.origin,
     errorPath: '/error'
   },
   httpInterceptor: {
-    allowedList: [`http://localhost:4201/*`],
+    allowedList: [
+      // {
+      //   // Match any request that starts 'https://dev-aam3gkbf.us.auth0.com/api/v2/' (note the asterisk)
+      //   uri: 'https://dev-aam3gkbf.us.auth0.com/api/v2/*',
+      //   tokenOptions: {
+      //     // The attached token should target this audience
+      //     audience: 'https://dev-aam3gkbf.us.auth0.com/api/v2/',
+
+      //     // The attached token should have these scopes
+      //     scope: 'read:current_user'
+      //   }
+      // },
+      {
+        // Match any request that starts 'https://dev-aam3gkbf.us.auth0.com/api/v2/' (note the asterisk)
+        uri: 'https://pizza-42-auth0.herokuapp.com/api/*',
+        tokenOptions: {
+          // The attached token should target this audience
+          audience: 'https://pizza42.com',
+
+          // The attached token should have these scopes
+          scope: 'write:orders'
+        }
+      }
+    ],
   },
 };
+
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
