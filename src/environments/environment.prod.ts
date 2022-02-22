@@ -2,7 +2,7 @@
 
 export let environment = {
   production: true,
-  apiUri: 'https://pizza-42-auth0.herokuapp.com',
+  apiUri: 'https://pizza-42-api.herokuapp.com',
   auth: {
     domain: 'dev-aam3gkbf.us.auth0.com',
     clientId: 'kup0idWFmiwEAFeNbUtReI7kblEVLjzs',
@@ -26,7 +26,7 @@ export let environment = {
       // },
       {
         // Match any request that starts 'https://dev-aam3gkbf.us.auth0.com/api/v2/' (note the asterisk)
-        uri: 'https://pizza-42-auth0.herokuapp.com/api/*',
+        uri: 'https://pizza-42-api.herokuapp.com/api/*',
         tokenOptions: {
           // The attached token should target this audience
           audience: 'https://pizza42.com',
