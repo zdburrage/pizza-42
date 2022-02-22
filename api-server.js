@@ -8,7 +8,6 @@ const jwtScope = require('express-jwt-scope');
 const jwksRsa = require('jwks-rsa');
 const authConfig = require('./auth_config_prod.json');  
 const axios = require("axios");
-var request = require("request");
 const bodyParser = require('body-parser');
 
 const app = express();
