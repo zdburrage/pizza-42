@@ -65,7 +65,7 @@ export class OrderComponent implements OnInit {
     this.apiService.verifyEmail(this.user.sub).subscribe(res => {
       alert('verification email sent!');
     }, error => {
-      alert('There was a problem sending the verification email. If you are logged in with a social account please verify yout email with your identity provider.');
+      alert('There was a problem sending the verification email. If you are logged in with a social account please verify your email with your identity provider.');
     });
   }
 }
