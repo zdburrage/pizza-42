@@ -72,12 +72,18 @@ export class OrderComponent implements OnInit {
     };
     const newOrders = this.orders;
     newOrders.push(order);
-    this.apiService.orderPizza(sub, newOrders).subscribe();
+    this.apiService.orderPizza(sub, newOrders).subscribe(res => {
+      alert('order placed successfully!');
+      console.log('order placed', res);
+    },
+    error => {
+      alert('There was a problem placing the order. Please try again later.');
+    });
   }
 
   public verifyEmail() {
     this.apiService.verifyEmail(this.user.sub).subscribe(res => {
-      console.log(res);
+      alert('verification email sent!');
     });
   }
 }
