@@ -10,9 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "server:app": "node server.js",
-    "server:api": "node api-server.js",
-    "dev": "npm-run-all --parallel start server:api",
-    "prod": "npm-run-all --parallel server:app server:api",
+    "dev": "npm-run-all --parallel start",
+    "prod": "npm-run-all --parallel server:app",
     "postbuild": "npm run copy:server",
     "copy:server": "copyfiles server.js auth_config.json dist/login-demo"
   },
