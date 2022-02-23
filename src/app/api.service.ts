@@ -28,9 +28,10 @@ export class ApiService {
     return this.http.post(`${config.environment.apiUri}/api/verification-email`, body);
   }
 
-  changePassword(userId: string): Observable<any> {
+  changePassword(userId: string, redirectUri: string): Observable<any> {
     const body = {
-      user_id: userId
+      user_id: userId,
+      result_url: redirectUri
     };
     return this.http.post(`${config.environment.apiUri}/api/change-password`, body);
   }

@@ -26,7 +26,8 @@ export class ProfileComponent implements OnInit {
   }
 
   changePassword() {
-    this.apiService.changePassword(this.user.sub).subscribe(response => {
+    const redirectUri = window.location.origin + '/profile';
+    this.apiService.changePassword(this.user.sub, redirectUri).subscribe(response => {
       window.location.href = response.ticket;
     });
   }

@@ -52,6 +52,28 @@
                   "maximumWarning": "6kb"
                 }
               ]
+            },
+            "dev": {
+              "fileReplacements": [
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ]
             }
           }
         },
@@ -63,6 +85,9 @@
           "configurations": {
             "production": {
               "browserTarget": "pizza-42-spa:build:production"
+            },
+            "dev": {
+              "browserTarget": "pizza-42-spa:build"
             }
           }
         },
