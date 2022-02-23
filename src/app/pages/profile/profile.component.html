@@ -11,12 +11,34 @@
     <div class="col-md">
       <h2>{{ user.name }}</h2>
       <p class="lead text-muted">{{ user.email }}</p>
+      <a class="link" (click)="changePassword()">Change Your Password</a>
     </div>
   </div>
-
-  <div class="row" *ngIf="profileJson">
-    <pre
-      class="rounded"
-    ><code class="json" [highlight]="profileJson"></code></pre>
-  </div>
+    <div class="col-md" *ngIf="orders">
+        <!-- <pre
+          class="rounded"
+        ><code class="json" [highlight]="profileJson"></code></pre> -->
+        <p>Name: {{user.name}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Email Verified?: {{user.email_verified ? 'Yes' : 'No'}}</p>
+      </div>
+      <br>
+      <br>
+      <div class="col-md">
+        <h3>Order History</h3>
+        <br>
+        <div *ngFor="let x of orders">
+          <p>
+            Date - {{x?.date | date}}
+          </p>
+          <p>
+            Pizzas - {{x?.pizzas}}
+          </p>
+          <p>
+            Price - {{x?.price | currency}}
+          </p>
+          -------------------------------------
+        </div>
+        <a routerLink="/order">Order More Pizza</a>
+      </div>
 </div>

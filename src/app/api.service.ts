@@ -21,10 +21,17 @@ export class ApiService {
   orderPizza(userId: string, userOrders: any[]): Observable<any> {
     return this.http.post(`${config.environment.apiUri}/api/order`, {user_id: userId, orders: userOrders});
   }
-  verifyEmail(userId: string) {
+  verifyEmail(userId: string): Observable<any> {
     const body = {
       user_id: userId
     };
     return this.http.post(`${config.environment.apiUri}/api/verification-email`, body);
+  }
+
+  changePassword(userId: string): Observable<any> {
+    const body = {
+      user_id: userId
+    };
+    return this.http.post(`${config.environment.apiUri}/api/change-password`, body);
   }
 }
