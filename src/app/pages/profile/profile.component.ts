@@ -29,6 +29,8 @@ export class ProfileComponent implements OnInit {
     const redirectUri = window.location.origin + '/profile';
     this.apiService.changePassword(this.user.sub, redirectUri).subscribe(response => {
       window.location.href = response.ticket;
+    }, error => {
+      alert('There was a problem attempting to change passwords. If you are logged in with a social account please reset your password with your identity provider.');
     });
   }
 }
