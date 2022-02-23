@@ -18,7 +18,7 @@
       <button (click)="verifyEmail()" class="btn-primary"
       *ngIf="!user?.email_verified"
     >
-      Verify Email/Resend Verification Email
+      Send Verification Email
     </button>
       <button (click)="orderPizza(user.sub)" class="btn-primary"
         *ngIf="user?.email_verified"

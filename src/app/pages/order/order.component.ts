@@ -28,26 +28,6 @@ export class OrderComponent implements OnInit {
       }
     );
 
-    // this.auth.user$
-    // .pipe(
-    //   switchMap((user) => {
-    //     this.user = user;
-    //     return of(user);
-    //   }),
-    //   concatMap((user) =>
-    //             // Use HttpClient to make the call
-    //      this.http.get(
-    //       encodeURI(`https://dev-aam3gkbf.us.auth0.com/api/v2/users/${user.sub}`)
-    //     )
-    //   ),
-    //   pluck('user_metadata'),
-    //   tap((meta) => {
-    //     this.metadata = meta;
-    //   })
-    // )
-    // .subscribe(res => {
-    //   this.orders = this.metadata.orders;
-    // });
     this.apiService.getPizzas().subscribe(
       res => {
         this.pizzas = res.pizzas;
@@ -84,6 +64,8 @@ export class OrderComponent implements OnInit {
   public verifyEmail() {
     this.apiService.verifyEmail(this.user.sub).subscribe(res => {
       alert('verification email sent!');
+    }, error => {
+      alert('There was a problem sending the verification email. If you are logged in with a social account please verify yout email with your identity provider.');
     });
   }
 }
