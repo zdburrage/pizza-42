@@ -11,14 +11,15 @@ export class ProfileComponent implements OnInit {
   orders: any = [];
   profileJson: string = null;
   user: any = null;
+  showRawProfile = false;
 
 
-  constructor(public auth: AuthService, public apiService: ApiService) {}
+  constructor(public auth: AuthService, public apiService: ApiService) { }
 
   ngOnInit() {
     this.auth.user$.subscribe(
-      (profile) =>
-       {this.profileJson = JSON.stringify(profile, null, 2);
+      (profile) => {
+        this.profileJson = JSON.stringify(profile, null, 2);
         this.orders = profile['https://pizza-42-auth0.herokuapp.com/orders'];
         this.user = profile;
       }
@@ -31,6 +32,14 @@ export class ProfileComponent implements OnInit {
       window.location.href = response.ticket;
     }, error => {
       alert('There was a problem attempting to change passwords. If you are logged in with a social account please reset your password with your identity provider.');
+    });
+  }
+
+  deleteAccount() {
+    this.apiService.deleteAccount(this.user.sub).subscribe(response => {
+      this.auth.logout();
+    }, error => {
+      alert('There was a problem attempting to delete your account.');
     });
   }
 }

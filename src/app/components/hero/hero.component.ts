@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService, User } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-hero',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroComponent implements OnInit {
 
-  constructor() { }
+  public user: User;
+
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.user$.subscribe(
+      (profile) => {
+        this.user = profile;
+      }
+    );
   }
 
 }

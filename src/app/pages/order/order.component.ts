@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, User } from '@auth0/auth0-angular';
-import {ApiService} from '../../api.service';
+import { ApiService } from '../../api.service';
 import { concatMap, tap, pluck, switchMap } from 'rxjs/operators';
 
 // Import the HttpClient for making API requests
@@ -18,7 +18,7 @@ export class OrderComponent implements OnInit {
   public orders: any = [];
   public selectedPizzas: any = [];
   metadata: any = {};
-  constructor(public auth: AuthService, public apiService: ApiService, private http: HttpClient) {}
+  constructor(public auth: AuthService, public apiService: ApiService, private http: HttpClient) { }
 
   ngOnInit() {
     this.auth.user$.subscribe(
@@ -38,7 +38,7 @@ export class OrderComponent implements OnInit {
   public orderPizza(sub: string, order?: any) {
     let totalPrice;
     if (this.selectedPizzas.length > 1) {
-      totalPrice = this.selectedPizzas.reduce( (a, b) => a + b.price, 0);
+      totalPrice = this.selectedPizzas.reduce((a, b) => a + b.price, 0);
     } else if (this.selectedPizzas.length === 1) {
       totalPrice = this.selectedPizzas[0].price;
     } else {
@@ -56,9 +56,9 @@ export class OrderComponent implements OnInit {
       alert('order placed successfully!');
       console.log('order placed', res);
     },
-    error => {
-      alert('There was a problem placing the order. Please try again later.');
-    });
+      error => {
+        alert('There was a problem placing the order. Please try again later.');
+      });
   }
 
   public verifyEmail() {

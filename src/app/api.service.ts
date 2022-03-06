@@ -7,7 +7,7 @@ import * as config from '../environments/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ping$(): Observable<any> {
     console.log(config.environment.apiUri);
@@ -19,7 +19,7 @@ export class ApiService {
   }
 
   orderPizza(userId: string, userOrders: any[]): Observable<any> {
-    return this.http.post(`${config.environment.apiUri}/api/order`, {user_id: userId, orders: userOrders});
+    return this.http.post(`${config.environment.apiUri}/api/order`, { user_id: userId, orders: userOrders });
   }
   verifyEmail(userId: string): Observable<any> {
     const body = {
@@ -34,5 +34,12 @@ export class ApiService {
       result_url: redirectUri
     };
     return this.http.post(`${config.environment.apiUri}/api/change-password`, body);
+  }
+
+  deleteAccount(userId: string): Observable<any> {
+    const body = {
+      user_id: userId
+    };
+    return this.http.post(`${config.environment.apiUri}/api/delete-account`, body);
   }
 }

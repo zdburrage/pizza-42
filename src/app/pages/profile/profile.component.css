@@ -10,3 +10,16 @@ a {
   color: steelblue !important;
   cursor: pointer;
 }
+
+.fixed-right {
+  right: 0;
+  position: absolute;
+}
+
+.margin-top {
+  margin-top: 10vh;
+}
+
+.red {
+  color: red !important;
+}
